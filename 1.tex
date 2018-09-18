@@ -1,0 +1,393 @@
+\XeTeXinputencoding "GB2312"
+
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+\usepackage{color,xcolor}            % 支持彩色文本、底色、文本框等
+\usepackage{cite}                    % 支持引用
+\usepackage{fontspec}
+\usepackage{latexsym}
+\usepackage{amsmath}                 % AMS LaTeX宏包
+\usepackage{amssymb}                 % 用来排版漂亮的数学公式
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}                % 英文花体字体
+\usepackage{bm}                      % 数学公式中的黑斜体
+\usepackage{relsize}                 % 调整公式字体大小?
+\usepackage{pgfplots}
+%\pagestyle{fancy}                    % 页眉页脚风格
+\usetikzlibrary{shapes.geometric, arrows,matrix,positioning,calc}
+%\setsansfont{楷体} % font name is case-sensitive
+ \usepackage[%paperwidth=18.4cm, paperheight= 26cm,
+            body={14.6true cm,22true cm},
+            twosideshift=0 pt,
+            %headheight=1.0true cm
+            ]{geometry}
+
+\usepackage[colorlinks,
+            linkcolor=red,
+            anchorcolor=blue,
+            citecolor=green
+            ]{hyperref}
+
+\begin{document}
+\title{HLLC-EP构造过程}
+\frame{\titlepage}
+
+\begin{frame}{HLLC-EP}
+ 一维控制方程为
+ \begin{equation}\label{eq:1d}
+   \left\{ \begin{aligned}
+	   & \partial _t \rho +\partial_x(\rho u)=0\\
+	   & \partial _t (\rho u)+\partial_x(\rho u^2 + p -s_{xx})=0\\
+	   &\partial _t (\rho E)+\partial_x([\rho E + p -s_{xx}]u)=0\\
+	   &\partial _t s_{xx}+u\partial_xs_{xx}-\frac{4}{3}\partial_x u=0\\
+	 \end{aligned}
+  \right.
+\end{equation}
+状态方程为$p=p(\rho,e)$。
+根据Runkine-Hugoniot关系
+有
+\begin{equation}\label{eq:RK}
+  \begin{aligned}
+&	F_L^*=F_L+s_L(U_L^*-U_L)\\
+&	F_R^*=F_L^*+s^*(U_R^*-U_L^*)\\
+&	F_R^*=F_R+s_R(U_R^*-U_R)\\
+  \end{aligned}
+  \end{equation}
+\end{frame}
+\begin{frame}{左右密度和接触间断速度估计}
+  \tiny
+先通过三波系统估计接触间断左右状态，  
+从上式(\ref{eq:RK})中第一式的第一项有
+\begin{equation}
+%  \begin{aligned}
+	\rho_L^* s^*=\rho_L u_L+s_L(\rho_L^*-\rho_L)
+%		&\rho_R^*_s^*=\rho_R u_R+S_R(\rho_R^*-\rho_R)\\ 
+%\end{aligned}
+\end{equation}
+可得
+\begin{equation}\label{eq:rhoL}
+  \rho_L^*(s^*-s_L)= \rho_L(u_L-s_L) 
+\end{equation}
+
+从第一式的第二项有
+\begin{equation}
+%  \begin{aligned}
+	\rho_L^* s^*^2-\sigma^*_L=\rho_L u_L^2-\sigma_L+s_L(\rho_L^* s^*-\rho_L u_L)
+%		&\rho_R^*_s^*=\rho_R u_R+S_R(\rho_R^*-\rho_R)\\ 
+\end{equation}
+可得
+\begin{equation}
+  \sigma^*_L=\sigma_L + (s_L-u_L)\rho_L u_L +\rho_L^* s^*(s^*-s_L)
+\end{equation}
+将 Eq.(\ref{eq:rhoL}) 带入可得
+\begin{equation}
+  \sigma^*_L=\sigma_L -\rho_L (s_L-u_L)(s^*-u_L)
+\end{equation}
+其中$\sigma=-p+s_{xx}$ 且接触间断两侧$\sigma_L^* = \sigma_R^* = \sigma^*$。
+
+根据Eq.(\ref{eq:RK})的第三式第一二项同理可得
+\begin{equation}
+  \sigma^*_R=\sigma_R -\rho_R (s_R-u_R)(s^*-u_R)
+\end{equation}
+因此可以得到
+\begin{equation}\label{eq:eva_s}
+  s^* = \frac{\sigma_L-\sigma_R+\rho_L u_L(s_L-u_L)-\rho_R u_R(s_R-u_R)}{\rho_L(s_L-u_L)-\rho_R(s_R-u_R)}
+\end{equation}
+通过Eq.(\ref{eq:rhoL})可以得到
+\begin{equation}
+  \rho_L^* = \frac{\rho_L(u_L-s_L)}{s^*-s_L}, \rho_R^* = \frac{\rho_R(u_R-s_R)}{s^*-s_R}
+\end{equation}
+由$s^* > s_L$和$s^*<s_R$ 可知
+\begin{equation}\label{eq:u_Ls1}
+  \begin{aligned}
+  u_L>s^* \hspace{0.2cm}\text{if} \hspace{0.2cm} \rho_L^* >\rho_L\\
+  u_L<s^* \hspace{0.2cm}\text{if} \hspace{0.2cm} \rho_L^* <\rho_L
+\end{aligned},
+  \begin{aligned}
+  u_R<s^* \hspace{0.2cm}\text{if} \hspace{0.2cm} \rho_R^* >\rho_R\\
+  u_R<s^* \hspace{0.2cm}\text{if} \hspace{0.2cm} \rho_R^* <\rho_R
+\end{aligned}
+\end{equation}
+\end{frame}
+\begin{frame}{根据估计密度关系确定塑性波}
+  \tiny{
+  根据Eq.(\ref{eq:1d}) 中密度守恒可以导出
+  \begin{equation}
+	\frac{1}{\rho}\frac{d\rho}{dt}+\frac{\partial u}{\partial x} =0
+  \end{equation}
+  同样，根据第四项可得
+  \begin{equation}
+	\frac{ds_{xx}}{dt}=\frac{4}{3}\mu\frac{\partial u}{\partial x}
+  \end{equation}
+  因此在屈服前满足关系
+  \begin{equation}
+\frac{1}{\rho}\frac{d\rho}{dt}=-\frac{4}{3}\mu\frac{ds_{xx}}{dt}
+\end{equation}
+即
+  \begin{equation}
+	\text{ln}(\rho)-\text{ln}(\rho_0)=\frac{4}{3}\mu(s_{xx}-s_{xx0})
+\end{equation}
+由于波前状态为$\rho_L$和$s_{xxL}$
+可得
+  \begin{equation}
+	\text{ln}(\frac{\rho_L^*}{\rho_L})=\frac{4}{3}\mu(s_{xxL}^*-s_{xxL})
+\end{equation}
+该关系成立条件为$|s_{xxL}|\le \frac{2}{3}Y_0$。
+而又由于
+  $s_{xxL}^*$同样需要满足屈服条件，有
+  \begin{equation}
+  \left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right|=|s_{xxL}^*| \le \frac{2}{3}Y_0
+\end{equation}
+}
+
+\end{frame}
+\begin{frame}{确定塑性波}
+  最后得到关系
+  \begin{equation}
+	s_{xxL}^* = \left\{\begin{aligned}
+		&s_{xxL}   &\text{if} \hspace{0.1cm} |s_{xxL}|\ge\frac{2}{3}Y_0\\
+		&\frac{2}{3}Y_0  &\text{else if}\hspace{0.1cm}   \left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \ge  \frac{2}{3}Y_0,  \rho_L^*\ge \rho_L\\
+		&-\frac{2}{3}Y_0  &\text{else if}\hspace{0.1cm}   \left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \ge  \frac{2}{3}Y_0,  \rho_L^* <  \rho_L\\
+	  & \frac{3}{4\mu} \text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL} & \text{else }
+	\end{aligned}
+  \right.
+\end{equation}
+如果 $|s_{xxL}|\le\frac{2}{3}Y_0$且$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \ge  \frac{2}{3}Y_0$，即存在弹性波又存在塑性波。
+\end{frame}
+
+\begin{frame}{塑性波前后条件}
+
+\tiny
+以左侧为例，塑性波波前条件为
+\begin{equation}
+  \rho_L,u_L,p_L,\sigma_{xxL}
+\end{equation}
+根据R-H条件，有
+\begin{equation}\label{RK_Lhat}
+  \begin{aligned}
+  & \hat{\rho}_L(\hat{u}_L-\hat{s}_L) = \rho_L(u_L-\hat{s}_L)\\
+& \hat{\rho}_L \hat{u}_L(\hat{u}_L-\hat{s}_L) = \rho_Lu_L(u_L-\hat{s}_L)+\hat{\sigma}_L-\sigma_L\\
+  & \hat{\rho}_L\hat{E}(\hat{u}_L-\hat{s}_L) = \rho_LE_L(u_L-\hat{s}_L)+\hat{\sigma}_L\hat{u_L}-\sigma_Lu_L\\
+\end{aligned}
+\end{equation}
+其中
+
+\begin{equation}\begin{aligned}
+	\hat{s}_{xxL} = \frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
+	\hat{s}_{xxL} = -\frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* < \rho_L
+\end{aligned}
+\end{equation}
+
+\begin{equation}\begin{aligned}
+	\hat{\rho}_{L} = \rho_L \text{exp}(\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxL})  \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
+	\hat{\rho}_{L} = \rho_L \text{exp}(-\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxL})  \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* < \rho_L\\ 
+\end{aligned}
+\end{equation}
+  \small{}
+未知量仅为波速$\hat{s}_L$、波后压力$\hat{p_L}$和波后速度$\hat{u_L}$。
+
+\end{frame}
+
+\begin{frame}{塑性波波后状态推导}
+  \tiny{
+  下面为了推导方便用$_2$表示波后条件 用$_1$表示波前条件，$s$表示波速
+  根据Eq.(\ref{RK_Lhat}).1 有
+  \begin{equation}
+	s = \frac{\rho_2 u_2-\rho_1u_1}{\rho_2-\rho_1}
+  \end{equation}
+和
+\begin{equation}\label{eq:u1_s}
+  u_1-s = \frac{(u_1-u_2)\rho_2}{\rho_2-\rho_1} 
+\end{equation}
+将公式
+Eq.(\ref{RK_Lhat}).1带入公式Eq.(\ref{RK_Lhat}).2 可得
+\begin{equation}
+  \rho_1(u_2 - u_1)(u_1-s) = \sigma_2 -\sigma_1
+\end{equation}
+继续将Eq.(\ref{eq:u1_s})带入上式，有
+\begin{equation}\label{eq:tu_2}
+  -t(u_2-u_1)^2 = \sigma_2-\sigma_1
+\end{equation}
+其中$t=\frac{\rho_1\rho_2}{\rho_2-\rho_1}$。
+同理
+Eq.(\ref{RK_Lhat}).2可以化为
+\begin{equation}
+  t(u_1-u_2)(E_2-E_1) =\sigma_2u_2-\sigma_1u_1
+\end{equation}
+又知道$E=e+\frac{1}{2}u^2$，有
+\begin{equation}
+  e_2-e_1= -\frac{\sigma_1+\sigma_2}{2t}
+\end{equation}
+根据状态方程
+\begin{equation}
+  e=c_0 p-c_1f(\rho)
+\end{equation}
+其中$c_0=\frac{1}{\rho_0\Gamma_0}$，$c_1=\frac{a_0^2}{\Gamma_0}$ 而$\sigma = -p+s_{xx}$，所以可解得
+\begin{equation}
+  p_2= \frac{2t(c_1f(\rho_2)+e_1)-(\sigma_1+s_{xx2})}{2tc_0-1}
+\end{equation}
+}
+\end{frame}
+
+\begin{frame}{塑性波波后状态推导}
+可以求得$\sigma_2 =-p_2 +s_{xx2}$
+根据公式Eq.(\ref{eq:tu_2})有
+\begin{equation}
+  (u_2-u_1)^2 = \frac{\sigma_1-\sigma_2}{t}
+\end{equation}
+由
+Eq.(\ref{eq:u_Ls1})关系可以得到，对于左行波
+\begin{equation}
+  \begin{aligned}
+  u_2 = u_1+\sqrt{\frac{\sigma_1-\sigma_2}{t}} \hspace{0.2cm} \text{if} \hspace{0.2cm} \rho_R^* >\rho_R\\
+  u_2 = u_1-\sqrt{\frac{\sigma_1-\sigma_2}{t}} \hspace{0.2cm} \text{if} \hspace{0.2cm} \rho_R^* <\rho_R\\
+\end{aligned}
+\end{equation}
+由此可以求得所有塑性波波后条件。
+\end{frame}
+\begin{frame}{左侧塑性波波后条件}
+  \tiny
+如果$|s{xxL}|\ge \frac{2}{3}Y_0$，左侧已经屈服所以不存在塑性波，同理，如果$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \le  \frac{2}{3}Y_0$ 左侧均为未屈服状态，因此
+ \begin{equation}
+   \hat{\rho}_L = \rho_L, \hat{u}_L =u_L, \hat{p}_L=p_L, \hat{s}_{xxL}=s_{xxL}
+ \end{equation}
+当$|s{xxL}| < \frac{2}{3}Y_0$同时$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| > \frac{2}{3}Y_0$时，波前为未屈服状态，波后为屈服状态，因此存在塑性波。此时
+\begin{equation}
+  \hat{s}_{xxL}= \left\{ \begin{aligned}
+	 \frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
+	 -\frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* < \rho_L
+\end{aligned}
+\right.
+,
+\hat{\rho}_{L}=\left\{ \begin{aligned}
+	 &\rho_L \text{exp}(\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxL})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
+	&\rho_L \text{exp}(-\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxL})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_L^* < \rho_L\\ 
+\end{aligned}
+\right.
+\end{equation}
+
+\begin{equation}
+  \hat{p}_L= \frac{2t(c_1f(\hat{\rho}_L)+e_L)-(\sigma_L+\hat{s}_{xxL})}{2tc_0-1}
+\end{equation}
+其中
+$t=\frac{\rho_L\hat{\rho}_L}{\hat{\rho_L}-\rho_L}$，$c_0=\frac{1}{\rho_0\Gamma_0}$，$c_1=\frac{a_0^2}{\Gamma_0}$。
+柯西应力为
+$\hat{\sigma}_L=-\hat{p}_L+\hat{s}_{xxL}$,
+速度
+\begin{equation}
+ \hat{u}_{L}=\left\{ \begin{aligned}
+	 u_L+\sqrt{\frac{\sigma_L-\hat{\sigma}_L}{t}} \hspace{0.2cm} \text{if} \hspace{0.2cm}  \rho_L^* > \rho_L\\
+	 u_L-\sqrt{\frac{\sigma_L-\hat{\sigma}_L}{t}} \hspace{0.2cm} \text{if} \hspace{0.2cm}  \rho_L^* < \rho_L\\
+	  \end{aligned}
+	\right.
+ \end{equation}
+
+\end{frame}
+
+\begin{frame}{右侧塑性波波后条件}
+  \tiny
+如果$|s{xxR}|\ge \frac{2}{3}Y_0$，右侧已经屈服所以不存在塑性波，同理，如果$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_R^*}{\rho_R})+s_{xxL}\right| \le  \frac{2}{3}Y_0$ 左侧均为未屈服状态，因此
+ \begin{equation}
+   \hat{\rho}_R = \rho_R, \hat{u}_R =u_R, \hat{p}_R=p_R, \hat{s}_{xxR}=s_{xxR}
+ \end{equation}
+当$|s{xxR}| < \frac{2}{3}Y_0$同时$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_R^*}{\rho_R})+s_{xxR}\right| > \frac{2}{3}Y_0$时，波前为未屈服状态，波后为屈服状态，因此存在塑性波。此时
+\begin{equation}
+  \hat{s}_{xxR}= \left\{ \begin{aligned}
+	 \frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_R^* > \rho_R\\ 
+	 -\frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_R^* < \rho_R
+\end{aligned}
+\right.
+,
+\hat{\rho}_{R}=\left\{ \begin{aligned}
+	 &\rho_R \text{exp}(\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxR})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_R^* > \rho_R\\ 
+	&\rho_R \text{exp}(-\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxR})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_R^* < \rho_R\\ 
+\end{aligned}
+\right.
+\end{equation}
+
+\begin{equation}
+  \hat{p}_R= \frac{2t(c_1f(\hat{\rho}_R)+e_R)-(\sigma_R+\hat{s}_{xxR})}{2tc_0-1}
+\end{equation}
+其中
+$t=\frac{\rho_R\hat{\rho}_R}{\hat{\rho_R}-\rho_R}$，$c_0=\frac{1}{\rho_0\Gamma_0}$，$c_1=\frac{a_0^2}{\Gamma_0}$。
+柯西应力为
+$\hat{\sigma}_R=-\hat{p}_R+\hat{s}_{xxR}$,
+速度
+\begin{equation}
+ \hat{u}_{R}=\left\{ \begin{aligned}
+	 u_R-\sqrt{\frac{\sigma_R-\hat{\sigma}_R}{t}} \hspace{0.2cm} \text{if} \hspace{0.2cm}  \rho_R^* > \rho_R\\
+	 u_R+\sqrt{\frac{\sigma_R-\hat{\sigma}_R}{t}} \hspace{0.2cm} \text{if} \hspace{0.2cm}  \rho_R^* < \rho_R\\
+	  \end{aligned}
+	\right.
+ \end{equation}
+\end{frame}
+
+\begin{frame}{求解弹性波状态}
+  \tiny
+  估计左行波和右行波波速，
+  \begin{equation}
+  s_L=\text{min}(\hat{u}_L-\hat{c}_L, \hat{u}_R-\hat{c}_R),
+  s_R=\text{max}(\hat{u}_L+\hat{c}_L, \hat{u}_R+\hat{c}_R),
+\end{equation}
+根据Eq.(\ref{eq:eva_s})有
+\begin{equation}
+  s^* = \frac{\hat{\sigma}_L-\hat{\sigma}_R+\hat{\rho}_L \hat{u}_L(s_L-u_L)-\hat{\rho}_R \hat{u}_R(s_R-u_R)}{\hat{\rho}_L(s_L-u_L)-\hat{\rho}_R(s_R-u_R)}
+\end{equation}
+因此可以得到
+\begin{equation}
+  \rho_L^* = \frac{\hat{\rho}_L(\hat{u}_L-s_L)}{s^*-s_L}, \rho_R^* = \frac{\hat{\rho}_R(u_R-s_R)}{s^*-s_R}
+\end{equation}
+求波后偏应力
+\begin{equation}
+	s_{xxL}^* =  \left\{\begin{aligned}
+		&\hat{s}_{xxL}   \hspace{1.6cm} \text{if} \hspace{0.2cm} |\hat{s}_{xxL}|\ge\frac{2}{3}Y_0\\
+		&\frac{3}{4\mu} \text{ln}(\frac{\rho_L^*}{\hat{\rho}_L})+\hat{s}_{xxL} \hspace{0.2cm}  \text{else }
+	\end{aligned}
+	,
+ 	s_{xxR}^* =  \left\{\begin{aligned}
+	&	\hat{s}_{xxR}   \hspace{1.6cm} \text{if} \hspace{0.2cm} |\hat{s}_{xxR}|\ge\frac{2}{3}Y_0\\
+	&	 \frac{3}{4\mu} \text{ln}(\frac{\rho_R^*}{\hat{\rho}_R})+\hat{s}_{xxR} \hspace{0.2cm}  \text{else }
+	\end{aligned}
+  \right. \right.
+\end{equation}
+求波后柯西应力
+\begin{equation}
+  \sigma_L^*=\sigma_R^*=\hat{\sigma}_L -\hat{\rho_L} (s_L-u_L)(s^*-u_L)
+\end{equation}
+波后压力
+\begin{equation}
+  p_L^* = s_{xxL}^*-\sigma_L^*, p_R^*= s_{xxR}^*-\sigma_R^*
+\end{equation}
+
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+%根据$\sigma = -p+s_{xx}$关系 可以得到
+%\begin{equation}
+%  p_L^*=s_{xxL}^*-\sigma^*, p_R^*=s_{xxR}^*-\sigma^*
+%\end{equation}
+%根据状态方程可以求得
+%``\begin{equation}
+%``  e_L^* =f(p_L^*,\rho_L^*), e_R^* =f(p_R^*,\rho_R^*)
+%``\end{equation}
+%``可得到所需所有状态。
+
+
+
+		
+\end{document}
+
