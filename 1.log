@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.3.13)  18 SEP 2018 14:54
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.3.13)  19 SEP 2018 16:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2094,23 +2094,23 @@ l.115 \end{frame}
 
 ]
 LaTeX Font Info:    Font shape `EU1/lmss/m/it' in size <10> not available
-(Font)              Font shape `EU1/lmss/m/sl' tried instead on input line 193.
+(Font)              Font shape `EU1/lmss/m/sl' tried instead on input line 194.
 
 LaTeX Font Info:    Font shape `EU1/lmss/m/it' in size <7> not available
-(Font)              Font shape `EU1/lmss/m/sl' tried instead on input line 193.
+(Font)              Font shape `EU1/lmss/m/sl' tried instead on input line 194.
 
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 193.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 194.
 LaTeX Font Info:    Font shape `EU1/lmss/bx/it' in size <10> not available
-(Font)              Font shape `EU1/lmss/bx/sl' tried instead on input line 193
+(Font)              Font shape `EU1/lmss/bx/sl' tried instead on input line 194
 .
 LaTeX Font Info:    Font shape `EU1/lmss/bx/it' in size <7> not available
-(Font)              Font shape `EU1/lmss/bx/sl' tried instead on input line 193
+(Font)              Font shape `EU1/lmss/bx/sl' tried instead on input line 194
 .
  [6
 
 ]
-Overfull \vbox (0.84407pt too high) detected at line 234
+Overfull \vbox (0.84407pt too high) detected at line 235
  []
 
 [7
@@ -2121,7 +2121,12 @@ Overfull \vbox (0.84407pt too high) detected at line 234
 
 ] [10
 
-] [11
+]
+Overfull \hbox (36.00137pt too wide) detected at line 374
+[][] \OT1/cmr/m/n/6 = [] \OML/cmm/m/it/6 ; [][] \OT1/cmr/m/n/6 = []
+ []
+
+[11
 
 ]
 \tf@nav=\write6
@@ -2133,17 +2138,17 @@ Overfull \vbox (0.84407pt too high) detected at line 234
 \tf@snm=\write8
 \openout8 = `1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 392.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 392.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 396.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 396.
  (./1.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 392.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 392.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 392.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 396.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 396.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 396.
  ) 
 Here is how much of TeX's memory you used:
  48389 strings out of 495252
  1096086 string characters out of 6180858
- 1220158 words of memory out of 5000000
+ 1222158 words of memory out of 5000000
  50896 multiletter control sequences out of 15000+600000
  18288 words of font info for 108 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191

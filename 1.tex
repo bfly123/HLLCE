@@ -125,22 +125,23 @@
   \end{equation}
   因此在屈服前满足关系
   \begin{equation}
-\frac{1}{\rho}\frac{d\rho}{dt}=-\frac{4}{3}\mu\frac{ds_{xx}}{dt}
+%\frac{1}{\rho}\frac{d\rho}{dt}=-\frac{4}{3}\mu\frac{ds_{xx}}{dt}
+	\frac{ds_{xx}}{dt}=-\frac{4}{3}\mu \frac{1}{\rho}\frac{d\rho}{dt}
 \end{equation}
 即
   \begin{equation}
-	\text{ln}(\rho)-\text{ln}(\rho_0)=\frac{4}{3}\mu(s_{xx}-s_{xx0})
+	s_{xx}-s_{xx0}=-\frac{4}{3}\mu(\text{ln}(\rho)-\text{ln}(\rho_0))
 \end{equation}
 由于波前状态为$\rho_L$和$s_{xxL}$
 可得
   \begin{equation}
-	\text{ln}(\frac{\rho_L^*}{\rho_L})=\frac{4}{3}\mu(s_{xxL}^*-s_{xxL})
+	s_{xxL}^*=-\frac{4}{3}\mu\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}
 \end{equation}
 该关系成立条件为$|s_{xxL}|\le \frac{2}{3}Y_0$。
 而又由于
   $s_{xxL}^*$同样需要满足屈服条件，有
   \begin{equation}
-  \left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right|=|s_{xxL}^*| \le \frac{2}{3}Y_0
+  \left|-\frac{4}{3}\mu\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right|=|s_{xxL}^*| \le \frac{2}{3}Y_0
 \end{equation}
 }
 
@@ -149,14 +150,13 @@
   最后得到关系
   \begin{equation}
 	s_{xxL}^* = \left\{\begin{aligned}
-		&s_{xxL}   &\text{if} \hspace{0.1cm} |s_{xxL}|\ge\frac{2}{3}Y_0\\
-		&\frac{2}{3}Y_0  &\text{else if}\hspace{0.1cm}   \left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \ge  \frac{2}{3}Y_0,  \rho_L^*\ge \rho_L\\
-		&-\frac{2}{3}Y_0  &\text{else if}\hspace{0.1cm}   \left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \ge  \frac{2}{3}Y_0,  \rho_L^* <  \rho_L\\
-	  & \frac{3}{4\mu} \text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL} & \text{else }
+		&\frac{2}{3}Y_0  &\text{else if}\hspace{0.1cm}   -\frac{4}{3}\mu\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL} \ge  \frac{2}{3}Y_0\\
+		&-\frac{2}{3}Y_0  &\text{else if}\hspace{0.1cm}   -\frac{4}{3}\mu\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL} \le  -\frac{2}{3}Y_0\\
+	  & -\frac{4}{3}\mu \text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL} & \text{else }
 	\end{aligned}
   \right.
 \end{equation}
-如果 $|s_{xxL}|\le\frac{2}{3}Y_0$且$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \ge  \frac{2}{3}Y_0$，即存在弹性波又存在塑性波。
+如果 $|s_{xxL}|\le\frac{2}{3}Y_0$且$\left|-\frac{4}{3}\mu\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \ge  \frac{2}{3}Y_0$，即存在弹性波又存在塑性波。
 \end{frame}
 
 \begin{frame}{塑性波前后条件}
@@ -177,14 +177,15 @@
 其中
 
 \begin{equation}\begin{aligned}
-	\hat{s}_{xxL} = \frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
-	\hat{s}_{xxL} = -\frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* < \rho_L
+	\hat{s}_{xxL} =- \frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
+	\hat{s}_{xxL} = \frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* < \rho_L
 \end{aligned}
 \end{equation}
 
 \begin{equation}\begin{aligned}
-	\hat{\rho}_{L} = \rho_L \text{exp}(\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxL})  \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
-	\hat{\rho}_{L} = \rho_L \text{exp}(-\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxL})  \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* < \rho_L\\ 
+	\hat{\rho}_{L} = \rho_L \text{exp}(\frac{Y_0}{2\mu}+\frac{3 S_{xxL}}{4\mu})  \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
+\hat{\rho}_{L} = \rho_L \text{exp}(-\frac{Y_0}{2\mu}+\frac{3 S_{xxL}}{4\mu}) 
+	  \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* < \rho_L\\ 
 \end{aligned}
 \end{equation}
   \small{}
@@ -251,21 +252,21 @@ Eq.(\ref{eq:u_Ls1})关系可以得到，对于左行波
 \end{frame}
 \begin{frame}{左侧塑性波波后条件}
   \tiny
-如果$|s{xxL}|\ge \frac{2}{3}Y_0$，左侧已经屈服所以不存在塑性波，同理，如果$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \le  \frac{2}{3}Y_0$ 左侧均为未屈服状态，因此
+如果$|s{xxL}|\ge \frac{2}{3}Y_0$，左侧已经屈服所以不存在塑性波，同理，如果$\left|-\frac{4}{3}\mu\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| \le  \frac{2}{3}Y_0$ 左侧均为未屈服状态，因此
  \begin{equation}
    \hat{\rho}_L = \rho_L, \hat{u}_L =u_L, \hat{p}_L=p_L, \hat{s}_{xxL}=s_{xxL}
  \end{equation}
-当$|s{xxL}| < \frac{2}{3}Y_0$同时$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| > \frac{2}{3}Y_0$时，波前为未屈服状态，波后为屈服状态，因此存在塑性波。此时
+当$|s{xxL}| < \frac{2}{3}Y_0$同时$\left|-\frac{4}{3}\mu\text{ln}(\frac{\rho_L^*}{\rho_L})+s_{xxL}\right| > \frac{2}{3}Y_0$时，波前为未屈服状态，波后为屈服状态，因此存在塑性波。此时
 \begin{equation}
   \hat{s}_{xxL}= \left\{ \begin{aligned}
-	 \frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
-	 -\frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* < \rho_L
+	 -\frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
+	 \frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_L^* < \rho_L
 \end{aligned}
 \right.
 ,
 \hat{\rho}_{L}=\left\{ \begin{aligned}
-	 &\rho_L \text{exp}(\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxL})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
-	&\rho_L \text{exp}(-\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxL})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_L^* < \rho_L\\ 
+	 & \rho_L \text{exp}(\frac{Y_0}{2\mu}+\frac{3 S_{xxL}}{4\mu})   \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_L^* > \rho_L\\ 
+&\rho_L \text{exp}(-\frac{Y_0}{2\mu}+\frac{3 S_{xxL}}{4\mu})   \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_L^* < \rho_L\\ 
 \end{aligned}
 \right.
 \end{equation}
@@ -290,11 +291,11 @@ $\hat{\sigma}_L=-\hat{p}_L+\hat{s}_{xxL}$,
 
 \begin{frame}{右侧塑性波波后条件}
   \tiny
-如果$|s{xxR}|\ge \frac{2}{3}Y_0$，右侧已经屈服所以不存在塑性波，同理，如果$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_R^*}{\rho_R})+s_{xxL}\right| \le  \frac{2}{3}Y_0$ 左侧均为未屈服状态，因此
+如果$|s{xxR}|\ge \frac{2}{3}Y_0$，右侧已经屈服所以不存在塑性波，同理，如果$\left|-\frac{4}{3}\mu\text{ln}(\frac{\rho_R^*}{\rho_R})+s_{xxL}\right| \le  \frac{2}{3}Y_0$ 左侧均为未屈服状态，因此
  \begin{equation}
    \hat{\rho}_R = \rho_R, \hat{u}_R =u_R, \hat{p}_R=p_R, \hat{s}_{xxR}=s_{xxR}
  \end{equation}
-当$|s{xxR}| < \frac{2}{3}Y_0$同时$\left|\frac{3}{4\mu}\text{ln}(\frac{\rho_R^*}{\rho_R})+s_{xxR}\right| > \frac{2}{3}Y_0$时，波前为未屈服状态，波后为屈服状态，因此存在塑性波。此时
+当$|s{xxR}| < \frac{2}{3}Y_0$同时$\left|-\frac{4}{3}\mu\text{ln}(\frac{\rho_R^*}{\rho_R})+s_{xxR}\right| > \frac{2}{3}Y_0$时，波前为未屈服状态，波后为屈服状态，因此存在塑性波。此时
 \begin{equation}
   \hat{s}_{xxR}= \left\{ \begin{aligned}
 	 \frac{2}{3}Y_0 \hspace{0.3cm} \text{if} \hspace{0.3cm} \rho_R^* > \rho_R\\ 
@@ -303,8 +304,8 @@ $\hat{\sigma}_L=-\hat{p}_L+\hat{s}_{xxL}$,
 \right.
 ,
 \hat{\rho}_{R}=\left\{ \begin{aligned}
-	 &\rho_R \text{exp}(\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxR})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_R^* > \rho_R\\ 
-	&\rho_R \text{exp}(-\frac{8}{9}\mu Y_0-\frac{4}{3}\mu S_{xxR})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_R^* < \rho_R\\ 
+	 & \rho_R \text{exp}(\frac{Y_0}{2\mu}+\frac{3 S_{xxR}}{4\mu})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_R^* > \rho_R\\ 
+	& \rho_R \text{exp}(-\frac{Y_0}{2\mu}+\frac{3 S_{xxR}}{4\mu})  \hspace{0.3cm} &\text{if} \hspace{0.3cm} \rho_R^* < \rho_R\\ 
 \end{aligned}
 \right.
 \end{equation}
@@ -344,15 +345,18 @@ $\hat{\sigma}_R=-\hat{p}_R+\hat{s}_{xxR}$,
 求波后偏应力
 \begin{equation}
 	s_{xxL}^* =  \left\{\begin{aligned}
-		&\hat{s}_{xxL}   \hspace{1.6cm} \text{if} \hspace{0.2cm} |\hat{s}_{xxL}|\ge\frac{2}{3}Y_0\\
-		&\frac{3}{4\mu} \text{ln}(\frac{\rho_L^*}{\hat{\rho}_L})+\hat{s}_{xxL} \hspace{0.2cm}  \text{else }
+		&\frac{2}{3}Y0  \hspace{1.5cm} \text{if} \hspace{0.2cm} -\frac{4}{3}\mu \text{ln}(\frac{\rho_L^*}{\hat{\rho}_L})+\hat{s}_{xxL} \ge \frac{2}{3}Y_0 \\
+	  &-\frac{2}{3}Y0  \hspace{1.2cm} \text{if} \hspace{0.2cm} -\frac{4}{3}\mu \text{ln}(\frac{\rho_L^*}{\hat{\rho}_L})+\hat{s}_{xxL} \le -\frac{2}{3}Y_0 \\
+		&-\frac{4}{3}\mu \text{ln}(\frac{\rho_L^*}{\hat{\rho}_L})+\hat{s}_{xxL} \hspace{0.2cm}  \text{else }
 	\end{aligned}
+ \right.
 	,
  	s_{xxR}^* =  \left\{\begin{aligned}
-	&	\hat{s}_{xxR}   \hspace{1.6cm} \text{if} \hspace{0.2cm} |\hat{s}_{xxR}|\ge\frac{2}{3}Y_0\\
-	&	 \frac{3}{4\mu} \text{ln}(\frac{\rho_R^*}{\hat{\rho}_R})+\hat{s}_{xxR} \hspace{0.2cm}  \text{else }
+		&\frac{2}{3}Y0  \hspace{1.5cm} \text{if} \hspace{0.2cm} -\frac{4}{3}\mu \text{ln}(\frac{\rho_R^*}{\hat{\rho}_R})+\hat{s}_{xxR} \ge \frac{2}{3}Y_0 \\
+	  &-\frac{2}{3}Y0  \hspace{1.2cm} \text{if} \hspace{0.2cm} -\frac{4}{3}\mu \text{ln}(\frac{\rho_R^*}{\hat{\rho}_R})+\hat{s}_{xxR} \le -\frac{2}{3}Y_0 \\
+	&	 -\frac{4}{3}\mu \text{ln}(\frac{\rho_R^*}{\hat{\rho}_R})+\hat{s}_{xxR} \hspace{0.2cm}  \text{else}
 	\end{aligned}
-  \right. \right.
+  \right.
 \end{equation}
 求波后柯西应力
 \begin{equation}
